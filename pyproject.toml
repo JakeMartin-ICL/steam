@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "steam"
+# version will be read dynamically from steam.__init__.__version__
+dynamic = ["version"]
+description = "Module for interacting with various Steam features"
+readme = "README.rst"
+# Project requires Python > 3.4
+requires-python = ">=3.5"
+license = { text = "MIT" }
+
+authors = [
+  { name = "Rossen Georgiev", email = "rossen@rgp.io" },
+]
+
+urls = { "Homepage" = "https://github.com/ValvePython/steam" }
+
+keywords = ["valve", "steam", "steamid", "api", "webapi", "steamcommunity"]
+
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Natural Language :: English",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.5",
+  "Programming Language :: Python :: 3.6",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+
+# Core runtime dependencies (copied from requirements.txt)
+dependencies = [
+  "six>=1.10.0",
+  "pycryptodomex>=3.7.0",
+  "requests>=2.9.1",
+  "urllib3>=2.6.2",
+  "vdf>=3.3",
+  "gevent>=1.3.0",
+  "protobuf~=3.0",
+  "gevent-eventemitter~=2.1",
+  "cachetools>=3.0.0",
+]
+
+[project.optional-dependencies]
+client = [
+  "gevent>=1.3.0",
+  "protobuf~=3.0",
+  "gevent-eventemitter~=2.1",
+]
+
+[tool.setuptools]
+# let setuptools find packages under the steam directory (matches current setup.py behavior)
+
+[tool.setuptools.packages.find]
+where = ["steam"]
+
+[tool.setuptools.dynamic]
+version = { attr = "steam.__version__" }

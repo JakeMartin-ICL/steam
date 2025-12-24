@@ -1,5 +1,10 @@
 *
 
+!pyproject.toml
+!setup.py
+!requirements.txt
+!README.rst
+
 !steam/
 !steam/*
 !steam/*/*
